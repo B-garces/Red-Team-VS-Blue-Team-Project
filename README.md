@@ -91,9 +91,9 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
 
 # Blue Team Proposed Alarms and Mitigation Strategies
 - Blocking the Port Scan
- - Alarm
+  - Alarm
    - An alert to be sent to the team for a 1000+ port connections within a hour
- - System Hardening 
+  - System Hardening 
    - To run multiple port scans to see what ports are being opened and if any are being used maliciously
    - To make sure Firewall is up to date and to diminish any connections to the host
 
