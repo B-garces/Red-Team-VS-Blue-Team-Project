@@ -12,7 +12,9 @@ Acted as a red team member to attack a vulnerable VM within my environment, ulti
      - Now we need to discover what machine we need to get access to 
 - After checking up on the IPs we can conclude that `192.168.1.105` ended up being a web server.   
 - After checking the website we see open directories that show company information showing that this is a vulnerability in itself.
+
 ![index](https://user-images.githubusercontent.com/61332852/137389410-4a1dec9f-30c7-4052-9a34-50fb89184500.png)
+
 - And while exploring through the files we see an important directory being mentioned by the name of a `secret_folder`. Which can end up containing PII or important company documents. 
 - After going in the URL bar and typing in the secret folder found `192.168.1.105/company_folders/secret_folder` it then shows a login prompt meant for “Ashton” only. 
 
