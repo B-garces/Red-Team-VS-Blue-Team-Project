@@ -61,25 +61,33 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
    - After having the session open we can run basic commands to grab any other additional information about the system we got access to like getuid. We can also open up a shell terminal if needed by using the command shell.
 - We can now run the command find -iname flag.txt to grab the flag we are looking for one the target machine.
 
-              Blue Team
+ Blue Team
 - Analysis: Identifying the port scan
    - The port scan occurred on October 4th 2021 at 11:52PM
    - 254,496 packets were sent from the machine 192.168.1.90
    - Since there is such high network traffic when it should be idle it can be a sign of a port scan 
+![85f85cd01314b79528146ba25e644eb1](https://user-images.githubusercontent.com/61332852/137392262-bab44589-0733-471d-a27c-2d3355f41d78.png)
+
 
 
 - Analysis: Finding the Request for the hidden directory 
    - 19,227 requests were made to this URL path. This path was requested by the IP address of 192.168.1.90
    - The files that were requested had a hash that contained Ryan login credentials 
+![c4273713c081053f537644eed454f141](https://user-images.githubusercontent.com/61332852/137392339-aba74b30-013d-4607-9dc1-e29d9dbfd67a.png)
+
 
 
 - Analysis: uncovering the brute force attack
    - 19,227 requests was made during the brute force attack to access the secret folder directory
    - 16,101 requests were made before the password was used correctly
+ ![e06114f629b2d5b8dd88724f3a6a59ac](https://user-images.githubusercontent.com/61332852/137392400-cc734f1b-c336-4f5a-9ec7-d629a092452f.png)
+
 
 - Analysis: Finding the WebDAV Connection
    - 180,859 requests were made to this directory 
    - The files that were requested was the passwd file and also the php file used to initiate the reverse shell
+![82ff51532e66b15c26075f0aa28127de](https://user-images.githubusercontent.com/61332852/137392456-7a4c8fc2-3a3e-4808-86be-c40ce0c5ca8f.png)
+
 
 Blue Team Proposed Alarms and Mitigation Strategies
 Blocking the Port Scan
