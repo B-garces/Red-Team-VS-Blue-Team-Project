@@ -6,8 +6,8 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
 
 - Netdiscover -r 192.168.1.255/16 Since we know the netmask is 255.255.255.0 that would be 16 bits of the subnet so then we can run the netdiscover command to discover other hosts on the network. ![netdiscover](https://user-images.githubusercontent.com/61332852/137389276-f4aca53a-40ea-41ac-a4b7-9ab04459d79a.png)
 
-      - After running the command we can conclude that there are 3 hosts within the network with the IPs of 192.168.1.1 , 192.168.1.100 and 192.168.1.105.
-      - Now we need to discover what machine we need to get access to 
+     - After running the command we can conclude that there are 3 hosts within the network with the IPs of 192.168.1.1 , 192.168.1.100 and 192.168.1.105.
+     - Now we need to discover what machine we need to get access to 
 - After checking up on the IPs we can conclude that 192.168.1.105 ended up being a web server.   
 - After checking the website we see open directories that show company information showing that this is a vulnerability in itself. ![index](https://user-images.githubusercontent.com/61332852/137389410-4a1dec9f-30c7-4052-9a34-50fb89184500.png)
 And while exploring through the files we see an important directory being mentioned by the name of a secret_folder. Which can end up containing PII or important company documents. 
