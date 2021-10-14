@@ -3,15 +3,16 @@ Acted as a red team member to attack a vulnerable VM within my environment, ulti
 
 
  # Red Team
-- `Ifconfig` to find out network IP address and network range ![ifconfig](https://user-images.githubusercontent.com/61332852/137389108-3288b38b-5fcd-497a-878f-206fe37f54f1.png)
+- `ifconfig` to find out network IP address and network range 
+![ifconfig](https://user-images.githubusercontent.com/61332852/137389108-3288b38b-5fcd-497a-878f-206fe37f54f1.png)
 
-- `Netdiscover -r 192.168.1.255/16` Since we know the netmask is 255.255.255.0 that would be 16 bits of the subnet so then we can run the netdiscover command to discover other hosts on the network. ![netdiscover](https://user-images.githubusercontent.com/61332852/137389276-f4aca53a-40ea-41ac-a4b7-9ab04459d79a.png)
-
+- `netdiscover -r 192.168.1.255/16` Since we know the netmask is 255.255.255.0 that would be 16 bits of the subnet so then we can run the netdiscover command to discover other hosts on the network. 
+![netdiscover](https://user-images.githubusercontent.com/61332852/137389276-f4aca53a-40ea-41ac-a4b7-9ab04459d79a.png)
      - After running the command we can conclude that there are 3 hosts within the network with the IPs of `192.168.1.1 , 192.168.1.100 and 192.168.1.105.`
      - Now we need to discover what machine we need to get access to 
 - After checking up on the IPs we can conclude that `192.168.1.105` ended up being a web server.   
 - After checking the website we see open directories that show company information showing that this is a vulnerability in itself.
- ![index](https://user-images.githubusercontent.com/61332852/137389410-4a1dec9f-30c7-4052-9a34-50fb89184500.png)
+![index](https://user-images.githubusercontent.com/61332852/137389410-4a1dec9f-30c7-4052-9a34-50fb89184500.png)
 - And while exploring through the files we see an important directory being mentioned by the name of a `secret_folder`. Which can end up containing PII or important company documents. 
 - After going in the URL bar and typing in the secret folder found `192.168.1.105/company_folders/secret_folder` it then shows a login prompt meant for “Ashton” only. 
 
@@ -20,7 +21,8 @@ Acted as a red team member to attack a vulnerable VM within my environment, ulti
 - After getting a username for a potential login we can then try to brute force the login by using `hydra -l ashton -P /usr/share/wordlists/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get /company_folders/secret_folder` command. 
 
 ![f2ef2a23bee60b46f58307ca124d2678](https://user-images.githubusercontent.com/61332852/137389842-76fca522-77e3-4a9d-9dac-ca31b880ea3e.png)
-   - After using the command we successfully brute force the account and was able to retrieve the login information for ashton ![84d82a9a9e4648086a79b066c3362ec5](https://user-images.githubusercontent.com/61332852/137390073-bf6a0604-b024-4723-89a7-38e77bde1c13.png)
+   - After using the command we successfully brute force the account and was able to retrieve the login information for ashton 
+  ![84d82a9a9e4648086a79b066c3362ec5](https://user-images.githubusercontent.com/61332852/137390073-bf6a0604-b024-4723-89a7-38e77bde1c13.png)
 
 - Logging in the account then brings us to a personal note Ashton then made for himself containing other important information
  ![cc397b4dc2076647d79196d97e9632fe](https://user-images.githubusercontent.com/61332852/137390404-6b85bb05-ec5a-460e-a194-31611558d358.png) 
