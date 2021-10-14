@@ -1,5 +1,6 @@
 # Red-Team-VS-Blue-Team-Project
-Acted as a red team to attack a vulnerable VM within my environment, ultimately gaining root access to the machine. Acted as Blue Team to use Kibana to review logs taken during the attack implemented as the red team.
+Acted as a red team member to attack a vulnerable VM within my environment, ultimately gaining root access to the machine. Acted as Blue Team member to use Kibana to review logs taken during the attack implemented as the red team. Scenarios in which responsibilities of both a pentester and SOC analyst are used. 
+
 
  # Red Team
 - `Ifconfig` to find out network IP address and network range ![ifconfig](https://user-images.githubusercontent.com/61332852/137389108-3288b38b-5fcd-497a-878f-206fe37f54f1.png)
