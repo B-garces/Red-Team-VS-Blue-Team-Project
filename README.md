@@ -11,7 +11,8 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
 - After checking up on the IPs we can conclude that 192.168.1.105 ended up being a web server.   
 - After checking the website we see open directories that show company information showing that this is a vulnerability in itself. ![index](https://user-images.githubusercontent.com/61332852/137389410-4a1dec9f-30c7-4052-9a34-50fb89184500.png)
 - And while exploring through the files we see an important directory being mentioned by the name of a secret_folder. Which can end up containing PII or important company documents. 
-- After going in the URL bar and typing in the secret folder found 192.168.1.105/company_folders/secret_folder it then shows a login prompt meant for “Ashton” only. ![ashton](https://user-images.githubusercontent.com/61332852/137389749-5b0f9dec-6d97-4d29-af2c-81b454318207.png)
+- After going in the URL bar and typing in the secret folder found 192.168.1.105/company_folders/secret_folder it then shows a login prompt meant for “Ashton” only. 
+   ![ashton](https://user-images.githubusercontent.com/61332852/137389749-5b0f9dec-6d97-4d29-af2c-81b454318207.png)
 
 - After getting a username for a potential login we can then try to brute force the login by using hydra -l ashton -P /usr/share/wordlists/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get /company_folders/secret_folder command. ![f2ef2a23bee60b46f58307ca124d2678](https://user-images.githubusercontent.com/61332852/137389842-76fca522-77e3-4a9d-9dac-ca31b880ea3e.png)
    - After using the command we successfully brute force the account and was able to retrieve the login information for ashton ![84d82a9a9e4648086a79b066c3362ec5](https://user-images.githubusercontent.com/61332852/137390073-bf6a0604-b024-4723-89a7-38e77bde1c13.png)
