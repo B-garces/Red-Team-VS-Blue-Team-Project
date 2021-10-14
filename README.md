@@ -61,3 +61,62 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
    - After having the session open we can run basic commands to grab any other additional information about the system we got access to like getuid. We can also open up a shell terminal if needed by using the command shell.
 - We can now run the command find -iname flag.txt to grab the flag we are looking for one the target machine.
 
+              Blue Team
+- Analysis: Identifying the port scan
+   - The port scan occurred on October 4th 2021 at 11:52PM
+   - 254,496 packets were sent from the machine 192.168.1.90
+   - Since there is such high network traffic when it should be idle it can be a sign of a port scan 
+
+
+- Analysis: Finding the Request for the hidden directory 
+   - 19,227 requests were made to this URL path. This path was requested by the IP address of 192.168.1.90
+   - The files that were requested had a hash that contained Ryan login credentials 
+
+
+- Analysis: uncovering the brute force attack
+   - 19,227 requests was made during the brute force attack to access the secret folder directory
+   - 16,101 requests were made before the password was used correctly
+
+- Analysis: Finding the WebDAV Connection
+   - 180,859 requests were made to this directory 
+   - The files that were requested was the passwd file and also the php file used to initiate the reverse shell
+
+Blue Team Proposed Alarms and Mitigation Strategies
+Blocking the Port Scan
+- Alarm
+   - An alert to be sent to the team for a 1000+ port connections within a hour
+- System Hardening 
+   - To run multiple port scans to see what ports are being opened and if any are being used maliciously
+   - To make sure Firewall is up to date and to diminish any connections to the host
+
+Finding the Request for the Hidden Directory
+- Alarm
+   - For an alert on the system to detect if certain files and directory within the system are being accessed without permission
+   - If these private files and directories are trying to be accessed more than 3 times the alert would then be sent to the team
+- System Hardening
+   - To encrypt sensitive data and for files to not be shared with users outside the company being in this situation.
+   - To make a whitelist to people who can and cant use these files and directories
+
+Mitigation: Preventing Brute Force Attacks
+- Alarm
+   - I would implement a failed login alert to show a certain amount of times the login has failed 
+   - If the HTTP error code 401 is occurring multiple times an alert would be sent as well
+   - If there is more than 5 failed login attempts the alarm would be triggered
+- System Hardening
+   - a lock out after to many attempts of logging in to prevent a brute force attack like the one implemented
+   - To require employees to have a complex password to mitigate the chances of getting a login attempt correctly
+
+Mitigation: Detecting the WebDav Connection
+- Alarm
+   - An alert would be made to send the IP addresses trying to get access to webdav  
+- System Hardening
+   - To whitelist certain IP addresses so only certain machines can access WebDav
+
+Mitigation: Identifying Reverse shell Uploads
+- Alarm
+   - An alert can be shown when a file is being uploaded to the webdav folder and also the type of file being copied.
+- System Hardening
+   - To mitigate the attack, permissions on the folder itself can be changed to read only so this prevents any malicious files being uploaded to the folder.
+   - To whitelist IP addresses that can access the webdav folder 
+
+
