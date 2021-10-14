@@ -61,7 +61,7 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
    - After having the session open we can run basic commands to grab any other additional information about the system we got access to like getuid. We can also open up a shell terminal if needed by using the command shell.
 - We can now run the command find -iname flag.txt to grab the flag we are looking for one the target machine.
 
- Blue Team
+ # Blue Team
 - Analysis: Identifying the port scan
    - The port scan occurred on October 4th 2021 at 11:52PM
    - 254,496 packets were sent from the machine 192.168.1.90
@@ -89,7 +89,7 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
 ![82ff51532e66b15c26075f0aa28127de](https://user-images.githubusercontent.com/61332852/137392456-7a4c8fc2-3a3e-4808-86be-c40ce0c5ca8f.png)
 
 
-Blue Team Proposed Alarms and Mitigation Strategies
+# Blue Team Proposed Alarms and Mitigation Strategies
 Blocking the Port Scan
 - Alarm
    - An alert to be sent to the team for a 1000+ port connections within a hour
