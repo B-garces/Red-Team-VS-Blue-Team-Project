@@ -2,7 +2,7 @@
 Acted as a red team to attack a vulnerable VM within my environment, ultimately gaining root access to the machine. Acted as Blue Team to use Kibana to review logs taken during the attack implemented as the red team.
 
    Red Team
-Ifconfig to find out network IP address and network range   ![ifconfig](https://user-images.githubusercontent.com/61332852/137389108-3288b38b-5fcd-497a-878f-206fe37f54f1.png)
+- Ifconfig to find out network IP address and network range   ![ifconfig](https://user-images.githubusercontent.com/61332852/137389108-3288b38b-5fcd-497a-878f-206fe37f54f1.png)
 
 Netdiscover -r 192.168.1.255/16 Since we know the netmask is 255.255.255.0 that would be 16 bits of the subnet so then we can run the netdiscover command to discover other hosts on the network. 
 After running the command we can conclude that there are 3 hosts within the network with the IPs of 192.168.1.1 , 192.168.1.100 and 192.168.1.105.
